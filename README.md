@@ -1,170 +1,289 @@
-\# Explainable Phishing Website and URL Detection
+# 🛡️ Explainable Phishing URL Detection
 
+<p align="center">
 
+### 🔍 Detect. 🤖 Predict. 🔬 Explain.
 
-An explainable machine learning framework for real-time phishing website and URL detection using ensemble classifiers and explainable AI techniques.
+**An Explainable Machine Learning Framework for Real-Time Phishing Website and URL Detection Using Ensemble Classifiers**
 
+</p>
 
+<p align="center">
 
-\## 📌 Overview
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-FF4B4B?style=for-the-badge&logo=streamlit)
+![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-Machine_Learning-F7931E?style=for-the-badge&logo=scikit-learn)
+![XGBoost](https://img.shields.io/badge/XGBoost-ML-189C3F?style=for-the-badge)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)
 
+</p>
 
+---
 
-Phishing attacks are one of the most common cybersecurity threats, where attackers create malicious websites or URLs that imitate legitimate services to steal sensitive information.
+## 🚨 **The Problem**
 
+Phishing remains one of the most common cybersecurity threats.
 
+Attackers can create deceptive URLs that imitate legitimate services and attempt to trick users into revealing:
 
-This project implements a machine learning-based phishing detection system that analyzes URL characteristics and predicts whether a given URL is:
+🔐 Passwords  
+💳 Financial information  
+👤 Personal data  
+📧 Account credentials  
 
+The challenge is not simply detecting a malicious URL.
 
+The bigger question is:
 
-\- 🟢 Legitimate
+> **🧠 Can machine learning identify suspicious URL patterns while still providing useful information about the prediction?**
 
-\- 🔴 Phishing
+This project explores that problem through an **explainable machine learning pipeline for phishing URL detection**.
 
+---
 
+# 🎯 **Project at a Glance**
 
-The system uses an ensemble machine learning model to improve detection performance and provides an interactive web interface for real-time URL analysis.
+| 🔍 Component | 💡 Implementation |
+|---|---|
+| 🔗 Input | Website URL |
+| 🧹 Processing | URL preprocessing & validation |
+| 🔎 Feature Engineering | Structural & lexical URL features |
+| 🤖 Classification | Ensemble Machine Learning |
+| 🌳 Models | Random Forest, XGBoost & ensemble model |
+| 📊 Output | Prediction + phishing probability |
+| 🔬 Interpretation | Extracted feature analysis |
+| 🌐 Interface | Streamlit Web Application |
+| 🧪 Evaluation | Model comparison, cross-validation & external testing |
 
+---
 
+# 🌐 **Live Application Preview**
 
-\## ✨ Features
+The project includes an interactive web application where users can enter a URL and receive a real-time prediction.
 
+### 🖥️ **Detection Interface**
 
+![Phishing Detection Dashboard](results/app-home.png)
 
-\- Real-time phishing URL detection
+### 🟢 **Legitimate URL Analysis**
 
-\- URL feature extraction
+![Legitimate URL Detection](results/legitimate-result.png)
 
-\- Ensemble machine learning classification
+### 🔴 **Phishing URL Analysis**
 
-\- Explainable AI-based predictions
+![Phishing URL Detection](results/phishing-result.png)
 
-\- Interactive web interface
+---
 
-\- Model evaluation and comparison
+# ✨ **Key Features**
 
-\- External dataset evaluation
+### 🛡️ **Real-Time Phishing Detection**
 
-\- Confusion matrix and performance analysis
+Enter a URL and receive an immediate classification.
 
+### 🔍 **Automated Feature Extraction**
 
+Raw URLs are transformed into structured machine-learning features.
 
-\## 🧠 Machine Learning Approach
+### 🤖 **Ensemble Machine Learning**
 
+The application uses a trained ensemble classifier for final prediction.
 
+### 📊 **Probability-Based Output**
 
-The system extracts multiple features from URLs and uses them as inputs to the trained machine learning model.
+The application provides a phishing probability alongside the classification.
 
+### 🔬 **Explainability-Oriented Analysis**
 
+Users can inspect extracted URL characteristics associated with the prediction.
 
-The project includes an ensemble classifier trained for phishing detection.
+### 🌍 **External Evaluation**
 
+The repository includes an external evaluation workflow to investigate model behavior beyond the primary dataset.
 
+### 📈 **Experimental Analysis**
 
-\### Main Components
+Model comparison and confusion-matrix analysis are included as part of the evaluation pipeline.
 
+---
 
+# 🧠 **How the System Works**
 
-1\. \*\*URL Feature Extraction\*\*
-
-&#x20;  - Extracts structural and lexical characteristics from URLs.
-
-&#x20;  - Converts raw URLs into machine-learning features.
-
-
-
-2\. \*\*Ensemble Classification\*\*
-
-&#x20;  - Uses a trained ensemble model to classify URLs.
-
-&#x20;  - The trained model is stored in the `models/` directory.
-
-
-
-3\. \*\*Prediction\*\*
-
-&#x20;  - The user enters a URL through the web application.
-
-&#x20;  - Features are extracted automatically.
-
-&#x20;  - The trained model predicts whether the URL is phishing or legitimate.
-
-
-
-4\. \*\*Explainability\*\*
-
-&#x20;  - Explainable AI techniques are used to improve the interpretability of model predictions.
-
-
-
-\## 🏗️ Project Structure
-
-
+The complete pipeline can be summarized as:
 
 ```text
+                     👤 USER
+                       │
+                       ▼
+                  🔗 Enter URL
+                       │
+                       ▼
+               🧹 URL Processing
+                       │
+                       ▼
+               🔍 Feature Extraction
+                       │
+                       ▼
+                📊 Feature Vector
+                       │
+                       ▼
+                 🤖 ML Models
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+        🌳 Random Forest     🚀 XGBoost
+              │                 │
+              └────────┬────────┘
+                       ▼
+                🤖 Ensemble Model
+                       │
+                       ▼
+                🎯 Prediction
+                       │
+             ┌─────────┴─────────┐
+             ▼                   ▼
+       🟢 LEGITIMATE         🔴 PHISHING
+             │                   │
+             └─────────┬─────────┘
+                       ▼
+                📊 Probability
+                       │
+                       ▼
+                🔬 Feature View
 
-Explainable-Phishing-Detection/
+🔍 URL Feature Engineering
 
-│
+A URL is not treated as a simple text string.
 
-├── app.py
+The system extracts meaningful characteristics that can help distinguish legitimate and suspicious URLs.
 
-├── feature\_extractor.py
+🧩 Feature Categories
 
-├── train\_model.py
+| 🔎 Category              | 📌 Examples                        |
+| ------------------------ | ---------------------------------- |
+| 🔗 URL Structure         | URL length, path characteristics   |
+| 🌐 Domain Structure      | Dots, subdomains, domain patterns  |
+| 🔣 Special Characters    | `@`, `-`, `_`, `?`, `=` and others |
+| 🔐 Security Indicators   | HTTPS-related characteristics      |
+| 🖥️ Host Characteristics | IP-address based URLs              |
+| 🔎 Query Characteristics | Query length and parameters        |
+| 🧠 Lexical Patterns      | Character/token-level properties   |
 
-├── evaluate\_models.py
+These characteristics are transformed into a structured feature representation that can be consumed by the machine learning models.
 
-├── cross\_validation.py
+🤖 Machine Learning Architecture
 
-├── confusion\_matrix.py
+The project investigates multiple machine learning approaches for phishing URL classification.
 
-├── external\_evaluation.py
+🌳 Random Forest
 
-├── model\_results.py
+A tree-based ensemble learning approach used to learn nonlinear relationships between URL characteristics.
 
-├── requirements.txt
+🚀 XGBoost
 
-│
+A gradient boosting algorithm used to capture complex patterns within structured URL features.
 
-├── data/
+🧠 Ensemble Model
 
-│   ├── phishing\_urls.csv
+The final application uses a trained ensemble classifier to generate the prediction presented to the user.
+                     🔗 URL
+                       │
+                       ▼
+               🔍 Feature Extraction
+                       │
+                       ▼
+                 📊 Feature Vector
+                       │
+             ┌─────────┴─────────┐
+             ▼                   ▼
+      🌳 Random Forest       🚀 XGBoost
+             │                   │
+             └─────────┬─────────┘
+                       ▼
+                🤖 Ensemble Model
+                       │
+                       ▼
+                 🎯 Final Result
 
-│   └── validation\_urls.csv
+🔬 Explainable AI
 
-│
+A major goal of this project is to move beyond a simple binary answer.
+A conventional system might provide:
+🔗 URL
+  ↓
+🔴 PHISHING
+This project also exposes the extracted characteristics used during analysis.
+🔗 URL
+  │
+  ▼
+🔍 Feature Extraction
+  │
+  ├── 📏 Length characteristics
+  ├── 🌐 Domain characteristics
+  ├── 🔣 Special characters
+  ├── 🔎 Lexical patterns
+  └── 🔐 Security indicators
+  │
+  ▼
+🤖 Ensemble Model
+  │
+  ▼
+📊 Prediction Probability
+  │
+  ▼
+🔬 Feature-Level Analysis
 
-├── external\_data/
+🔗 URL
+  │
+  ▼
+🔍 Feature Extraction
+  │
+  ├── 📏 Length characteristics
+  ├── 🌐 Domain characteristics
+  ├── 🔣 Special characters
+  ├── 🔎 Lexical patterns
+  └── 🔐 Security indicators
+  │
+  ▼
+🤖 Ensemble Model
+  │
+  ▼
+📊 Prediction Probability
+  │
+  ▼
+💡 Why Explainability Matters
 
-│   ├── external\_test.csv
+In cybersecurity, a prediction can be more useful when analysts can investigate the characteristics behind it.
 
-│   ├── final\_external\_test.csv
+Explainability can help with:
 
-│   ├── external\_results.csv
+🔎 Investigating suspicious URL patterns
+📊 Understanding model behavior
+🧪 Examining unexpected predictions
+🛡️ Supporting security analysis
+🧠 Improving trust in ML-assisted detection
+🔬 Supporting future research
 
-│   └── real\_external\_results.csv
+The objective is not only to detect phishing URLs, but to make machine-learning-assisted detection more understandable.
 
-│
+📊 Experimental Evaluation
 
-├── models/
+The project includes several evaluation workflows designed to investigate model performance and behavior.
 
-│   ├── ensemble\_model.pkl
+🎯 Evaluation Dimensions
 
-│   └── feature\_columns.pkl
+| 📊 Evaluation       | 🎯 Purpose                           |
+| ------------------- | ------------------------------------ |
+| 🎯 Accuracy         | Overall classification performance   |
+| 🎣 Precision        | Reliability of positive predictions  |
+| 🔎 Recall           | Ability to identify phishing samples |
+| ⚖️ F1-Score         | Balance between precision and recall |
+| 🧩 Confusion Matrix | Detailed classification analysis     |
+| 🔄 Cross-Validation | Model stability                      |
+| 🌍 External Testing | Generalization analysis              |
 
-│
+Note: The repository contains the experimental result files rather than relying only on a single performance number.
 
-├── results/
 
-│   ├── confusion\_matrix.png
 
-│   ├── model\_comparison.png
-
-│   └── model\_comparison.csv
-
-│
-
-└── src/
 
