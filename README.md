@@ -211,43 +211,244 @@ Cybersecurity decisions can have significant consequences. A transparent model c
 
 ## 🛠️ Technology Stack
 
-| Category | Technologies |
-|---|---|
-| Language | Python |
-| Web Framework | Streamlit |
-| Machine Learning | Scikit-learn, XGBoost |
-| Data Processing | Pandas, NumPy |
-| Model Persistence | Joblib |
-| Visualization | Matplotlib |
-| Explainability | SHAP / Feature-level analysis |
-| Version Control | Git & GitHub |
+The project combines **machine learning, cybersecurity-oriented feature engineering, explainable AI, data processing, and an interactive web interface** into a single end-to-end detection system.
 
-## 📈 Results & Analysis
+### 💻 Core Technologies
 
-The repository includes experimental artifacts generated during model evaluation.
-
-### Available Results
-
-- Model comparison
-- Confusion matrix
-- Cross-validation analysis
-- External evaluation
-- Prediction results
-- Feature analysis
-
-These results are provided to make the experimental process reproducible and transparent.
-
-## ⚠️ Limitations
-
-The current system primarily focuses on URL-level characteristics.
-
-A URL-based classifier may not capture every aspect of a malicious website. Sophisticated attacks can involve legitimate-looking URLs, compromised legitimate domains, redirects, dynamically generated content, or malicious page content.
-
-Therefore, the system should be considered a machine-learning-assisted detection mechanism rather than a complete replacement for established cybersecurity defenses.
+| 🧩 Category | ⚙️ Technology | 🎯 Role in the Project |
+|---|---|---|
+| 🐍 Programming Language | **Python** | Core language used to build the detection pipeline |
+| 🌐 Web Application | **Streamlit** | Provides the interactive phishing URL detection interface |
+| 🤖 Machine Learning | **Scikit-learn** | Model training, evaluation, preprocessing, and classification |
+| 🚀 Gradient Boosting | **XGBoost** | High-performance machine learning model for phishing classification |
+| 🌳 Ensemble Learning | **Random Forest + Ensemble Model** | Learns complex patterns from URL-based features |
+| 🔍 Feature Engineering | **Custom Python Feature Extractor** | Converts raw URLs into structured ML features |
+| 📊 Data Processing | **Pandas** | Dataset manipulation and analysis |
+| 🔢 Numerical Computing | **NumPy** | Numerical operations and feature processing |
+| 📈 Visualization | **Matplotlib** | Confusion matrices, model comparison, and result visualization |
+| 🔬 Explainable AI | **SHAP / Feature Analysis** | Helps interpret model behavior and feature contributions |
+| 💾 Model Persistence | **Joblib** | Saves and loads trained machine learning models |
+| 🗂️ Version Control | **Git & GitHub** | Source-code management and project versioning |
 
 ---
 
-## 🚀 Future Improvements
+### 🧠 Machine Learning Layer
+
+```text
+🔗 Raw URL
+     │
+     ▼
+🔍 Feature Extraction
+     │
+     ▼
+📊 Structured Feature Vector
+     │
+     ├───────────────┐
+     ▼               ▼
+🌳 Random Forest   🚀 XGBoost
+     │               │
+     └───────┬───────┘
+             ▼
+       🤖 Ensemble Model
+             │
+             ▼
+      🎯 Final Prediction
+
+🌐 Application Layer
+The user interacts with the system through a Streamlit-based web interface.
+
+👤 User
+  │
+  │ Enter URL
+  ▼
+🌐 Streamlit Interface
+  │
+  ▼
+🔍 Feature Extraction
+  │
+  ▼
+🤖 Ensemble Model
+  │
+  ▼
+📊 Prediction Probability
+  │
+  ├── 🟢 Legitimate
+  │
+  └── 🔴 Phishing
+
+🔬 Explainability Layer
+
+The explainability component complements the prediction by exposing the URL characteristics used during analysis.
+
+🤖 Model Prediction
+        │
+        ▼
+🔬 Explainability Analysis
+        │
+        ▼
+📊 Feature-Level Insights
+        │
+        ▼
+💡 More Interpretable Prediction
+
+📦 Key Python Libraries
+Python
+│
+├── 🧠 scikit-learn
+├── 🚀 xgboost
+├── 📊 pandas
+├── 🔢 numpy
+├── 📈 matplotlib
+├── 💾 joblib
+├── 🌐 streamlit
+└── 🔬 shap
+
+
+## 📊 Results & Analysis
+
+The proposed phishing URL detection system was evaluated using multiple experimental approaches to assess its classification performance, robustness, and generalization capability.
+
+### 🏆 Performance Overview
+
+| 📌 Evaluation | 🔍 Purpose |
+|---|---|
+| 🎯 Accuracy | Measures overall classification correctness |
+| 🎣 Precision | Measures how reliably phishing predictions are identified |
+| 🔎 Recall | Measures the ability to detect phishing URLs |
+| ⚖️ F1-Score | Balances precision and recall |
+| 🧩 Confusion Matrix | Analyzes correct and incorrect classifications |
+| 🔄 Cross-Validation | Evaluates model stability across different data splits |
+| 🌍 External Evaluation | Tests generalization on external URL data |
+
+---
+
+## 🤖 Model Comparison
+
+Multiple machine learning approaches were evaluated to investigate their effectiveness for phishing URL classification.
+
+The experimental workflow compares different classifiers and evaluates their performance using multiple metrics. The final web application uses the trained **ensemble classifier** for real-time URL prediction.
+
+### 📈 Comparative Performance
+
+The following visualization summarizes the experimental comparison between the implemented machine learning approaches.
+
+![Model Comparison](results/model_comparison.png)
+
+> 💡 Why **ensemble learning**?
+> The ensemble approach combines the predictive capabilities of multiple learners to capture complementary patterns in URL-based features and provide the final classification used by the application.
+
+### 🔎** Evaluation Metrics**
+
+The comparison considers metrics such as:
+
+- 🎯 **Accuracy** — Overall classification correctness
+- 🎣 **Precision** — Reliability of phishing predictions
+- 🔍 **Recall** — Ability to identify phishing URLs
+- ⚖️ **F1-Score** — Balance between precision and recall
+
+The underlying numerical results are available in:
+
+```text
+results/model_comparison.csv
+📈 **Model comparison visualization:**
+
+![Model Comparison](results/model_comparison.png)
+
+---
+
+### 🧩 **Confusion Matrix**
+
+The confusion matrix provides a detailed view of the model's classification behavior, including:
+
+- 🟢 Correctly identified legitimate URLs
+- 🔴 Correctly identified phishing URLs
+- ⚠️ Legitimate URLs incorrectly classified as phishing
+- 🚨 Phishing URLs incorrectly classified as legitimate
+
+![Confusion Matrix](results/confusion_matrix.png)
+
+---
+
+### 🌍 **External Evaluation**
+
+To examine how the model performs beyond the primary dataset, an external evaluation workflow was implemented.
+
+The external evaluation process helps investigate the model's ability to generalize to previously unseen URL samples.
+
+```text
+                 🧪 External URLs
+                        │
+                        ▼
+               🔍 Feature Extraction
+                        │
+                        ▼
+                 🤖 Trained Model
+                        │
+                        ▼
+               📊 Prediction Results
+                        │
+                        ▼
+             ┌──────────┴──────────┐
+             ▼                     ▼
+        🟢 Legitimate          🔴 Phishing
+
+## ⚠️** Limitations**
+
+While the proposed system provides an effective machine-learning-based approach for phishing URL detection, several limitations remain.
+
+### 🔗 1.** URL-Level Analysis**
+
+The current system primarily analyzes **URL-based features**. It does not fully inspect the visual appearance, HTML structure, JavaScript behavior, or complete content of the webpage.
+
+### 🆕 2. **Zero-Day Phishing**
+
+Newly generated phishing URLs may exhibit patterns that differ significantly from those present in the training data. Therefore, completely novel attack patterns may be challenging for a trained model to identify.
+
+### 🌐 3.** Dataset Dependency**
+
+Machine learning performance depends heavily on the quality, diversity, and representativeness of the datasets used for training and evaluation.
+
+### 🔄 4.** Concept Drift**
+
+Phishing techniques continuously evolve. URL structures and attacker strategies may change over time, which can reduce model performance if the model is not periodically retrained.
+
+### 🧩 5.** Limited Contextual Information**
+
+URL-level features alone may not capture important contextual information such as:
+
+- 🌍 Domain reputation
+- 🔐 SSL/TLS certificate information
+- 🕐 Domain age
+- 🌐 DNS characteristics
+- 📄 Website content
+- 🔀 Redirect behavior
+- 🧠 JavaScript activity
+
+### ⚖️ 6. False Positives and False Negatives
+
+No machine learning classifier is perfect.
+
+A legitimate URL may occasionally be classified as suspicious (**false positive**), while a sophisticated phishing URL may be classified as legitimate (**false negative**).
+
+For this reason, the system should be considered a **decision-support tool rather than a standalone security mechanism**.
+
+### 🔬 7. **Explainability Scope**
+
+The current explainability approach focuses primarily on the **features extracted from the URL**. Future versions can provide richer model-level explanations and more detailed visual interpretations of individual predictions.
+
+### 🖥️ 8. **Deployment Scope**
+
+The current implementation is primarily designed as an interactive research and demonstration application using Streamlit. Production deployment would require additional considerations such as scalability, authentication, monitoring, security hardening, and continuous model updates.
+
+---
+
+### 💡 **Research Perspective**
+
+These limitations also identify opportunities for future development. Extending the system with **website-content analysis, domain intelligence, DNS information, real-time threat feeds, continuous learning, and richer XAI techniques** could make the detection framework more comprehensive and robust.
+
+---
+
+## 🚀 **Future Improvements**
 
 Future development could extend the system with:
 
