@@ -1,0 +1,25 @@
+Preliminary External Diagnostic Evaluation
+A preliminary external diagnostic evaluation was conducted using real_external_test.csv, which contained 20 URLs: 10 legitimate URLs and 10 synthetic phishing URLs. Using a decision threshold of 0.90, the model achieved an accuracy of 1.0000, precision of 1.0000, recall of 1.0000, F1-score of 1.0000, and ROC-AUC of 1.0000.
+
+The confusion matrix contained 10 true negatives, 0 false positives, 0 false negatives, and 10 true positives. Therefore, the model correctly classified all 10 legitimate URLs and all 10 phishing URLs in this diagnostic dataset.
+
+The purpose of this evaluation was to verify that the external-evaluation script, feature-extraction process, decision threshold, and metric calculations were working correctly.
+
+However, this dataset contained only 20 URLs, and the phishing URLs were synthetically constructed with obvious suspicious terms. Therefore, these results should be considered preliminary diagnostic findings and should not be interpreted as evidence that the model will achieve 100% accuracy on real-world URLs.
+
+
+| Metric             | Result  |
+| ------------------ | ------- |
+| Dataset size       | 20 URLs |
+| Legitimate URLs    | 10      |
+| Phishing URLs      | 10      |
+| Decision threshold | 0.90    |
+| Accuracy           | 1.0000  |
+| Precision          | 1.0000  |
+| Recall             | 1.0000  |
+| F1-score           | 1.0000  |
+| ROC-AUC            | 1.0000  |
+| True negatives     | 10      |
+| False positives    | 0       |
+| False negatives    | 0       |
+| True positives     | 10      |
