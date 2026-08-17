@@ -209,6 +209,19 @@ Cybersecurity decisions can have significant consequences. A transparent model c
 - Debug unexpected classifications
 - Improve confidence in machine learning-assisted security systems
 
+## 🛠️ Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Language | Python |
+| Web Framework | Streamlit |
+| Machine Learning | Scikit-learn, XGBoost |
+| Data Processing | Pandas, NumPy |
+| Model Persistence | Joblib |
+| Visualization | Matplotlib |
+| Explainability | SHAP / Feature-level analysis |
+| Version Control | Git & GitHub |
+
 ## 📈 Results & Analysis
 
 The repository includes experimental artifacts generated during model evaluation.
